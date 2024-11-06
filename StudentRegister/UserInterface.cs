@@ -46,18 +46,17 @@ namespace StudentRegister
 
             var students = context.Students
                 .Include(x => x.Courses)
+                .ThenInclude(x => x.Teacher)
                 .ToList();
 
             foreach (var student in students)
             {
                 Console.WriteLine("Name: " + student.FirstName + " " + student.LastName);
                 Console.WriteLine("City: " + student.City);
-                Console.Write("Courses: ");
                 foreach (var course in student.Courses)
                 {
-                    Console.Write(course.Subject + ", ");
+                    Console.WriteLine("CourseID: " + course.CourseId + " - Teacher: " + course.Teacher.FirstName + " " + course.Teacher.LastName + " - Subject: " + course.Subject + ", ");
                 }
-                Console.WriteLine();
                 Console.WriteLine();
             }
 
