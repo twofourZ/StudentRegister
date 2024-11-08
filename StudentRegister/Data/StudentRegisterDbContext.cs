@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using StudentRegister.DbModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentRegister
+namespace StudentRegister.Data
 {
     internal class StudentRegisterDbContext : DbContext
     {
-        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StudentRegister;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<PhD> PhDs { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -17,12 +18,15 @@ namespace StudentRegister
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build()
+                .GetSection("ConnectionStrings")["StudentRegister"]);
         }
 
         public void InitializeDefaultData()
         {
-            if (this.Teachers.Count() < 1)
+            if (Teachers.Count() < 1)
             {
                 var teacher1 = new Teacher()
                 {
@@ -36,7 +40,7 @@ namespace StudentRegister
                 }
                 };
 
-                if (!this.Courses.Any(x => x.Teacher == teacher1))
+                if (!Courses.Any(x => x.Teacher == teacher1))
                 {
                     var mathematics1 = new Course()
                     {
@@ -62,10 +66,10 @@ namespace StudentRegister
                         Subject = teacher1.PhDs[3].Subject
                     };
 
-                    this.Courses.AddRange(mathematics1, physics1, alchemy1, theology1);
+                    Courses.AddRange(mathematics1, physics1, alchemy1, theology1);
                 }
 
-                this.Teachers.Add(teacher1);
+                Teachers.Add(teacher1);
                 this.SaveChanges();
             }
         }

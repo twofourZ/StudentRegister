@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StudentRegister.Data;
+using StudentRegister.DbModels;
 
 namespace StudentRegister
 {
