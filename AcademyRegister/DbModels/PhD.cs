@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace StudentRegister.DbModels
+namespace AcademyRegister.DbModels
 {
     internal class PhD
     {

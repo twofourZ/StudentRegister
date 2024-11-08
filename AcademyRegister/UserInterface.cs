@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StudentRegister.Data;
-using StudentRegister.DbModels;
+﻿using AcademyRegister.Data;
+using AcademyRegister.DbModels;
+using Microsoft.EntityFrameworkCore;
 
-namespace StudentRegister
+namespace AcademyRegister
 {
     internal class UserInterface
     {
-        private StudentRegisterDbContext context;
-        public UserInterface(StudentRegisterDbContext context)
+        private AcademyRegisterDbContext context;
+        public UserInterface(AcademyRegisterDbContext context)
         {
             this.context = context;
         }
@@ -36,7 +36,7 @@ namespace StudentRegister
                     default:
                         Console.Clear();
                         Console.WriteLine("Error");
-                        System.Threading.Thread.Sleep(500);
+                        Thread.Sleep(500);
                         break;
                 }
             }
@@ -122,7 +122,7 @@ namespace StudentRegister
                         context.Students.Update(student);
                         context.SaveChanges();
                         Console.WriteLine("Edit successful!");
-                        System.Threading.Thread.Sleep(1000);
+                        Thread.Sleep(1000);
                         break;
                     }
                     catch (Exception ex)
@@ -156,7 +156,7 @@ namespace StudentRegister
                 Console.WriteLine(
                     "New student created\n" +
                     "Welcome " + student.FirstName + "!");
-                System.Threading.Thread.Sleep(1000);
+                Thread.Sleep(1000);
             }
             catch (Exception ex)
             {
@@ -216,19 +216,19 @@ namespace StudentRegister
                         if (student.Courses.Contains(course))
                         {
                             Console.WriteLine("You are already in this course");
-                            System.Threading.Thread.Sleep(500);
+                            Thread.Sleep(500);
                         }
                         else
                         {
                             student.Courses.Add(course);
                             Console.WriteLine("Course added!");
-                            System.Threading.Thread.Sleep(500);
+                            Thread.Sleep(500);
                         }
                     }
                     if (course == null)
                     {
                         Console.WriteLine("CourseID " + input + " not found");
-                        System.Threading.Thread.Sleep(500);
+                        Thread.Sleep(500);
                     }
                 }
 
@@ -242,19 +242,19 @@ namespace StudentRegister
                         if (!student.Courses.Contains(course))
                         {
                             Console.WriteLine("You are not in this course");
-                            System.Threading.Thread.Sleep(500);
+                            Thread.Sleep(500);
                         }
                         else
                         {
                             student.Courses.Remove(course);
                             Console.WriteLine("Course removed!");
-                            System.Threading.Thread.Sleep(500);
+                            Thread.Sleep(500);
                         }
                     }
                     if (course == null)
                     {
                         Console.WriteLine("CourseID " + input + " not found");
-                        System.Threading.Thread.Sleep(500);
+                        Thread.Sleep(500);
                     }
                 }
 

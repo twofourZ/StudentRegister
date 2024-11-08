@@ -1,15 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AcademyRegister.DbModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using StudentRegister.DbModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentRegister.Data
+namespace AcademyRegister.Data
 {
-    internal class StudentRegisterDbContext : DbContext
+    internal class AcademyRegisterDbContext : DbContext
     {
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<PhD> PhDs { get; set; }
@@ -21,7 +21,7 @@ namespace StudentRegister.Data
             optionsBuilder.UseSqlServer(new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build()
-                .GetSection("ConnectionStrings")["StudentRegister"]);
+                .GetSection("ConnectionStrings")["AcademyRegister"]);
         }
 
         public void InitializeDefaultData()
@@ -70,7 +70,7 @@ namespace StudentRegister.Data
                 }
 
                 Teachers.Add(teacher1);
-                this.SaveChanges();
+                SaveChanges();
             }
         }
     }

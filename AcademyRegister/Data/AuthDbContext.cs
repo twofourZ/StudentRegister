@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AcademyRegister.Auth;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using StudentRegister.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentRegister.Data
+namespace AcademyRegister.Data
 {
     internal class AuthDbContext : DbContext
     {
@@ -19,7 +19,7 @@ namespace StudentRegister.Data
             optionsBuilder.UseSqlServer(new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build()
-                .GetSection("ConnectionStrings")["StudentRegisterAuth"]);
+                .GetSection("ConnectionStrings")["AcademyRegisterAuth"]);
         }
     }
 }

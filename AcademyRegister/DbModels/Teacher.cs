@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentRegister.DbModels
+namespace AcademyRegister.DbModels
 {
     internal class Teacher
     {

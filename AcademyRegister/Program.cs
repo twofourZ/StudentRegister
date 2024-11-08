@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentRegister.Data;
+using AcademyRegister.Data;
 
-namespace StudentRegister
+namespace AcademyRegister
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var context = new StudentRegisterDbContext();
+            var context = new AcademyRegisterDbContext();
 
             context.InitializeDefaultData();
 

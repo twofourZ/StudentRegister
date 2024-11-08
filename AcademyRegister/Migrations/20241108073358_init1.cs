@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace StudentRegister.Migrations
+namespace AcademyRegister.Migrations
 {
     /// <inheritdoc />
-    public partial class initial07 : Migration
+    public partial class init1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
